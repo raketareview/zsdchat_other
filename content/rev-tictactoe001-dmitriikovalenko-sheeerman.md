@@ -12,11 +12,11 @@ https://github.com/sheeerman/tictactoe_OOP
 
 **Рассмотрю только применение ООП.** 
 
-✅ record Coordinate(int row, int col)
+**✅ record Coordinate(int row, int col)**
 
 Идеальная координата для всех игр с прямоугольным полем.
 
-❌️ enum CellState
+**❌️ enum CellState**
 
 - Какие-то цифровые коды, они не не описывают состояние ячейки.
 
@@ -48,11 +48,11 @@ public enum CellState {
 Если бы класс назывался `Figure`, то однозначно нет.  
 А так пусть будет.
 
-✅ class Board
+**✅ class Board**
 
 ОК.
 
-👻 class WinChecker
+**👻 class WinChecker**
 
 Мне не нравится способ определения состояния игры. 
 Метод знает слишком много правил общей игровой логики: играют только два игрока и заранее знает, как каждого из них зовут 
@@ -67,11 +67,11 @@ public boolean isDraw(Board board, List<Figure> figures) {...}
 ``` 
 Но это не настолько принципиальный вопрос, так что пусть будет. 
 
-✅ class Display
+**✅ class Display**
 
 ОК.
 
-👻 interface Player
+**👻 interface Player**
 
 На первый взгляд ничего не предвещает беды, но посмотрим, как метод `makeMove()` проявит себя в имплементациях 
 ```java
@@ -82,7 +82,7 @@ public interface Player {
 }
 ```
 
-❌️ class HumanPlayer implements Player
+**❌️ class HumanPlayer implements Player**
 
 - Нарушение SRP, чужая ответственность, зависимость модели от представления.
 
@@ -134,7 +134,7 @@ public class HumanPlayer implements Player {
 Дело в том, что нарушение простых правил проектирования рано или поздно вылазит в совершенно неожиданных местах. 
 Поэтому лучше их знать и не нарушать.
 
-❌️ class BotPlayer implements Player 
+**❌️ class BotPlayer implements Player **
 
 - Нарушение SRP. То же, что в прошлом классе.
 
@@ -210,11 +210,11 @@ public class HumanPlayer implements Player {
 Это ответственность общей игровой логики.  
 Бот должен отвечать мгновенно. А через какие промежутки времени его будут опрашивать- не его забота.  
 
-✅ class Game
+**✅ class Game**
 
 ОК.
 
-✅ class Main
+**✅ class Main**
 
 ОК.
 
