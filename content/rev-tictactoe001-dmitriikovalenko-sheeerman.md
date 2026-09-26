@@ -12,7 +12,7 @@ https://github.com/sheeerman/tictactoe_OOP
 
 **Рассмотрю только применение ООП.** 
 
-✅ public record Coordinate(int row, int col)
+✅ record Coordinate(int row, int col)
 
 Идеальная координата для всех игр с прямоугольным полем.
 
@@ -52,7 +52,7 @@ public enum CellState {
 
 ОК.
 
-👻 GameState checkGameState
+👻 class WinChecker
 
 Мне не нравится способ определения состояния игры. 
 Метод знает слишком много правил общей игровой логики: играют только два игрока и заранее знает, как каждого из них зовут 
@@ -71,7 +71,7 @@ public boolean isDraw(Board board, List<Figure> figures) {...}
 
 ОК.
 
-👻  interface Player
+👻 interface Player
 
 На первый взгляд ничего не предвещает беды, но посмотрим, как метод `makeMove()` проявит себя в имплементациях 
 ```java
@@ -197,7 +197,7 @@ public class HumanPlayer implements Player {
       if (isValidMove(coord, board)) {
         return coord;
       }
-    } while (true);
+    } while (true); 
   }
 }
 ```
