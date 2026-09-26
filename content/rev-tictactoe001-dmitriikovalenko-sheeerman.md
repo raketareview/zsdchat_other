@@ -56,7 +56,7 @@ public enum CellState {
 **👻 class WinChecker**
 
 Мне не нравится способ определения состояния игры.  
-Метод знает слишком много правил общей игровой логики: играют только два игрока и заранее знает, как каждого из них зовут 
+Метод знает слишком много правил общей игровой логики: что играют только два игрока и заранее знает, как каждого из них зовут 
 ```java
 public GameState checkGameState(Board board) 
 ```
@@ -87,24 +87,10 @@ public interface Player {
 
 - Нарушение SRP, чужая ответственность, зависимость модели от представления.
 
-Модель(а это модель) не должна ничего печатать в консоль
+Модель(а это модель) не должна ничего печатать в консоль и получать напрямую от юзера через клавиатуру
 ```java
 public class HumanPlayer implements Player {
-
-  private final Scanner scanner;
-  private final Display display;
-  private final CellState symbol;
-
-  public HumanPlayer(Scanner scanner, Display display, CellState symbol) {
-    this.scanner = scanner;
-    this.display = display;
-    this.symbol = symbol;
-  }
-
-  @Override
-  public CellState getSymbol() {
-    return symbol;
-  }
+  //...
 
   @Override
   public Coordinate makeMove(Board board) {
